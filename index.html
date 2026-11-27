@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="GameZone: encontre jogos, periféricos e acessórios para elevar sua experiência gamer.">
+
+    <title>Sua loja gamer | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/index.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+
+            <!-- BOTÃO DO MENU PARA CELULARES E TABLETS -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li>
+                        <a href="index.html" aria-current="page">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="produtos.html">
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobre.html">
+                            Sobre nós
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- ENTRAR -->
+                <a href="login.html" id="login-link">
+                    Entrar
+                </a>
+            </nav>
+
+
+            <!-- AÇÕES DO CABEÇALHO -->
+            <div id="acoes-cabecalho">
+
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras">
+                    Carrinho
+
+                    <span id="cart-count" aria-label="Quantidade de itens">
+                        0
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo-principal">
+
+
+        <!-- =========================================
+                 BANNER PRINCIPAL
+            ========================================== -->
+
+        <section id="banner-principal" aria-labelledby="titulo-banner">
+            <div class="container-banner">
+
+                <div class="conteudo-banner">
+
+                    <p class="texto-destaque">
+                        O seu próximo nível começa aqui
+                    </p>
+
+                    <h1 id="titulo-banner">
+                        Sua próxima experiência gamer está na GameZone.
+                    </h1>
+
+                    <p>
+                        Descubra jogos, periféricos e acessórios para
+                        montar seu setup e aproveitar cada partida.
+                    </p>
+
+                    <a href="produtos.html" id="botao-ver-produtos">
+                        Explorar produtos
+                    </a>
+
+                </div>
+
+
+                <!-- IMAGEM DO BANNER -->
+                <div id="imagem-banner">
+
+                    <img src="Imagens/Setup Gamer Neon Roxo e Laranja.png" alt="Ilustração temática gamer da GameZone">
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 BENEFÍCIOS
+            ========================================== -->
+
+        <section id="beneficios" aria-labelledby="titulo-beneficios">
+            <div class="container">
+
+                <div class="cabecalho-secao">
+
+                    <div>
+
+                        <h2 id="titulo-beneficios">
+                            Por que escolher a GameZone?
+                        </h2>
+
+                        <p>
+                            Tudo pensado para tornar sua experiência
+                            gamer mais simples e organizada.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="lista-beneficios">
+
+                    <article class="beneficio">
+
+                        <h3>
+                            Tudo em um só lugar
+                        </h3>
+
+                        <p>
+                            Jogos, periféricos e acessórios reunidos
+                            para facilitar sua busca.
+                        </p>
+
+                    </article>
+
+
+                    <article class="beneficio">
+
+                        <h3>
+                            Navegação simples
+                        </h3>
+
+                        <p>
+                            Encontre produtos e informações de forma
+                            rápida e organizada.
+                        </p>
+
+                    </article>
+
+
+                    <article class="beneficio">
+
+                        <h3>
+                            Para diferentes jogadores
+                        </h3>
+
+                        <p>
+                            Produtos para quem busca diversão,
+                            desempenho ou um setup personalizado.
+                        </p>
+
+                    </article>
+
+
+                    <article class="beneficio">
+
+                        <h3>
+                            Sua experiência em primeiro lugar
+                        </h3>
+
+                        <p>
+                            Uma plataforma pensada para oferecer
+                            praticidade durante sua navegação.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 CATEGORIAS
+            ========================================== -->
+
+        <section id="categorias" aria-labelledby="titulo-categorias">
+            <div class="container">
+
+                <h2 id="titulo-categorias">
+                    Explore nossas categorias
+                </h2>
+
+                <p>
+                    Encontre os produtos ideais para sua experiência gamer.
+                </p>
+
+
+                <div class="lista-categorias">
+
+                    <article class="categoria">
+
+                        <a href="produtos.html?categoria=jogos">
+
+                            <img src="Imagens/Imagem Jogos.png" alt="">
+
+                            <h3>
+                                Jogos
+                            </h3>
+
+                            <p>
+                                Descubra sua próxima aventura.
+                            </p>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="categoria">
+
+                        <a href="produtos.html?categoria=perifericos">
+
+                            <img src="Imagens/Imagem Periféricos.png" alt="">
+
+                            <h3>
+                                Periféricos
+                            </h3>
+
+                            <p>
+                                Precisão e desempenho para jogar.
+                            </p>
+
+                        </a>
+
+                    </article>
+
+
+                    <article class="categoria">
+
+                        <a href="produtos.html?categoria=acessorios">
+
+                            <img src="Imagens/Imagem Acessórios.png" alt="">
+
+                            <h3>
+                                Acessórios
+                            </h3>
+
+                            <p>
+                                Complete seu setup.
+                            </p>
+
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 PRODUTOS EM DESTAQUE
+            ========================================== -->
+
+        <section id="produtos-destaque" aria-labelledby="titulo-produtos-destaque">
+            <div class="container">
+
+                <div class="cabecalho-secao">
+
+                    <div>
+
+                        <h2 id="titulo-produtos-destaque">
+                            Produtos em destaque
+                        </h2>
+
+                        <p>
+                            Confira alguns dos destaques da nossa loja.
+                        </p>
+
+                    </div>
+
+
+                    <a href="produtos.html">
+                        Ver todos os produtos
+                    </a>
+
+                </div>
+
+
+                <!--
+                        Os produtos serão carregados
+                        posteriormente pelo JavaScript.
+                    -->
+                <div id="lista-produtos-destaque"></div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 NOVIDADES
+            ========================================== -->
+
+        <section id="novidades" aria-labelledby="titulo-novidades">
+            <div class="container">
+
+                <div class="cabecalho-secao">
+
+                    <div>
+
+                        <h2 id="titulo-novidades">
+                            Novidades na GameZone
+                        </h2>
+
+                        <p>
+                            Confira os produtos mais recentes
+                            adicionados à nossa loja.
+                        </p>
+
+                    </div>
+
+
+                    <a href="produtos.html">
+                        Ver novidades
+                    </a>
+
+                </div>
+
+
+                <!--
+                        As novidades serão carregadas
+                        posteriormente pelo JavaScript.
+                    -->
+                <div id="lista-novidades"></div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 ENCONTRE O SEU ESTILO
+            ========================================== -->
+
+        <section id="estilo-gamer" aria-labelledby="titulo-estilo-gamer">
+            <div class="container">
+
+                <div class="cabecalho-secao">
+
+                    <div>
+
+                        <h2 id="titulo-estilo-gamer">
+                            Encontre o seu próximo nível
+                        </h2>
+
+                        <p>
+                            Não importa o seu estilo de jogo:
+                            sempre existe algo novo para descobrir.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="lista-estilos">
+
+                    <article class="estilo-card">
+
+                        <h3>
+                            Para quem quer jogar
+                        </h3>
+
+                        <p>
+                            Explore novos mundos, desafios e aventuras
+                            através de diferentes jogos.
+                        </p>
+
+                        <a href="produtos.html?categoria=jogos">
+                            Explorar jogos
+                        </a>
+
+                    </article>
+
+
+                    <article class="estilo-card">
+
+                        <h3>
+                            Para melhorar o setup
+                        </h3>
+
+                        <p>
+                            Conheça periféricos para complementar
+                            seu desempenho e experiência.
+                        </p>
+
+                        <a href="produtos.html?categoria=perifericos">
+                            Ver periféricos
+                        </a>
+
+                    </article>
+
+
+                    <article class="estilo-card">
+
+                        <h3>
+                            Para personalizar seu espaço
+                        </h3>
+
+                        <p>
+                            Encontre acessórios para deixar
+                            seu setup ainda mais completo.
+                        </p>
+
+                        <a href="produtos.html?categoria=acessorios">
+                            Explorar acessórios
+                        </a>
+
+                    </article>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 SOBRE A GAMEZONE
+            ========================================== -->
+
+        <section id="conheca-gamezone" aria-labelledby="titulo-conheca-gamezone">
+            <div class="container">
+
+                <div id="conteudo-conheca-gamezone">
+
+                    <div>
+
+                        <p class="texto-destaque">
+                            CONHEÇA A GAMEZONE
+                        </p>
+
+                        <h2 id="titulo-conheca-gamezone">
+                            Mais do que uma loja, seu espaço no universo gamer.
+                        </h2>
+
+                        <p>
+                            A GameZone foi criada para reunir jogos,
+                            periféricos e acessórios em uma experiência
+                            de navegação simples e organizada.
+                        </p>
+
+                        <a id="butao_estranho" href="sobre.html">
+                            Conheça nossa história
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 PERGUNTAS FREQUENTES
+            ========================================== -->
+
+        <section id="faq-inicial" aria-labelledby="titulo-faq-inicial">
+            <div class="container">
+
+                <div class="cabecalho-secao">
+
+                    <div>
+
+                        <h2 id="titulo-faq-inicial">
+                            Perguntas frequentes
+                        </h2>
+
+                        <p>
+                            Algumas respostas rápidas para ajudar você.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div id="lista-faq-inicial">
+
+                    <details>
+
+                        <summary>
+                            Como posso encontrar um produto?
+                        </summary>
+
+                        <p>
+                            Acesse a página de produtos e utilize
+                            a pesquisa, os filtros e as opções
+                            disponíveis.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            Preciso criar uma conta para comprar?
+                        </summary>
+
+                        <p>
+                            As regras de acesso e finalização das
+                            compras serão definidas durante a
+                            implementação do sistema.
+                        </p>
+
+                    </details>
+
+
+                    <details>
+
+                        <summary>
+                            Como posso recuperar minha senha?
+                        </summary>
+
+                        <p>
+                            Na página de login, selecione a opção
+                            "Esqueci minha senha" para solicitar
+                            a recuperação.
+                        </p>
+
+                    </details>
+
+                </div>
+
+
+                <a href="sobre.html#perguntas-frequentes" id="link-ver-faq">
+                    Ver todas as perguntas
+                </a>
+
+            </div>
+        </section>
+
+
+        <!-- =========================================
+                 CHAMADA PARA A LOJA
+            ========================================== -->
+
+        <section id="chamada-loja" aria-labelledby="titulo-chamada-loja">
+            <div class="container">
+
+                <h2 id="titulo-chamada-loja">
+                    Prepare seu próximo nível.
+                </h2>
+
+                <p>
+                    Explore o catálogo e encontre o que falta
+                    no seu setup.
+                </p>
+
+                <a href="produtos.html">
+                    Conhecer a loja
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+
+            <!-- MARCA -->
+            <div class="rodape-marca">
+
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+
+            </div>
+
+
+            <!-- NAVEGAÇÃO -->
+            <nav aria-label="Links do rodapé">
+
+                <h2>
+                    Navegação
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="produtos.html">
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobre.html">
+                            Sobre nós
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+
+            <!-- CONTA -->
+            <div class="rodape-conta">
+
+                <h2>
+                    Termos e Condições
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="termos.html">
+                            Termos e Condições de Uso
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="privacidade.html">
+                            Política de Privacidade
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="trocas.html">
+                            Política de Trocas, Devoluções e Reembolso
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- INFORMAÇÕES -->
+            <div class="rodape-informacoes">
+
+                <p>
+                    &copy;
+                    <span id="current-year">2026</span>
+                    GameZone. Todos os direitos reservados.
+                </p>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+</body>
+
+</html>

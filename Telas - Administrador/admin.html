@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Painel Administrativo | GameZone</title>
+
+    <meta name="description" content="Painel administrativo da GameZone para gerenciamento de produtos e estoque.">
+
+    <!-- Tema -->
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Estilos CSS - Administrador/admin.css">
+</head>
+
+<body id="pagina-admin">
+
+    <!-- ========================================
+         PAINEL ADMINISTRATIVO
+    ======================================== -->
+
+    <div id="painel-administrativo">
+
+        <!-- SIDEBAR -->
+
+        <aside id="sidebar-admin">
+
+            <div id="admin-logo">
+                <a href="../index.html" aria-label="GameZone - Página inicial">
+                    GAME<span>ZONE</span>
+                </a>
+            </div>
+
+            <div class="admin-sidebar-titulo">
+                ADMINISTRAÇÃO
+            </div>
+
+            <nav id="navegacao-admin" aria-label="Navegação administrativa">
+
+                <button
+                    type="button"
+                    class="item-menu-admin ativo"
+                    data-secao-admin="dashboard"
+                    aria-current="page">
+
+                    <span class="icone-menu-admin" aria-hidden="true">
+                        ▦
+                    </span>
+
+                    Dashboard
+                </button>
+
+                <button
+                    type="button"
+                    class="item-menu-admin"
+                    data-secao-admin="produtos">
+
+                    <span class="icone-menu-admin" aria-hidden="true">
+                        ▣
+                    </span>
+
+                    Produtos
+                </button>
+
+                <button
+                    type="button"
+                    class="item-menu-admin"
+                    data-secao-admin="estoque">
+
+                    <span class="icone-menu-admin" aria-hidden="true">
+                        ▤
+                    </span>
+
+                    Estoque
+                </button>
+
+            </nav>
+
+            <div id="sidebar-admin-final">
+
+                <a href="../index.html" id="voltar-loja-admin">
+                    <span aria-hidden="true">↗</span>
+                    Voltar à loja
+                </a>
+
+                <div id="admin-perfil">
+
+                    <div id="admin-avatar" aria-hidden="true">
+                        A
+                    </div>
+
+                    <div id="admin-perfil-informacoes">
+                        <strong>Administrador</strong>
+                        <span>GameZone</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div id="overlay-admin"></div>
+
+
+        <!-- ========================================
+             CONTEÚDO PRINCIPAL
+        ======================================== -->
+
+        <main id="conteudo-admin">
+
+            <!-- BARRA SUPERIOR -->
+
+            <header id="topbar-admin">
+
+                <div id="topbar-admin-esquerda">
+
+                    <button
+                        type="button"
+                        id="abrir-menu-admin"
+                        aria-label="Abrir menu administrativo"
+                        aria-expanded="false">
+
+                        ☰
+                    </button>
+
+                    <div>
+                        <span class="topbar-admin-label">
+                            GAMEZONE / ADMIN
+                        </span>
+
+                        <h1 id="titulo-pagina-admin">
+                            Dashboard
+                        </h1>
+                    </div>
+
+                </div>
+
+                <div id="topbar-admin-direita">
+
+                    <a href="../produtos.html" class="admin-link-loja">
+                        Visualizar loja
+                    </a>
+
+                </div>
+
+            </header>
+
+
+            <!-- ========================================
+                 SEÇÃO: DASHBOARD
+            ======================================== -->
+
+            <section
+                id="secao-dashboard"
+                class="secao-admin ativa"
+                data-conteudo-admin="dashboard">
+
+                <div class="introducao-admin">
+
+                    <h2>Visão geral</h2>
+
+                    <p>
+                        Acompanhe os principais indicadores dos produtos
+                        e do estoque da GameZone.
+                    </p>
+
+                </div>
+
+
+                <!-- CARDS DE INDICADORES -->
+
+                <div id="dashboard-indicadores">
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Produtos cadastrados</span>
+
+                            <div class="indicador-admin-icone">
+                                ▣
+                            </div>
+                        </div>
+
+                        <strong id="total-produtos">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Total no catálogo
+                        </span>
+
+                    </article>
+
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Produtos ativos</span>
+
+                            <div class="indicador-admin-icone">
+                                ✓
+                            </div>
+                        </div>
+
+                        <strong id="total-produtos-ativos">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Disponíveis na loja
+                        </span>
+
+                    </article>
+
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Estoque baixo</span>
+
+                            <div class="indicador-admin-icone">
+                                !
+                            </div>
+                        </div>
+
+                        <strong id="total-estoque-baixo">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            5 unidades ou menos
+                        </span>
+
+                    </article>
+
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Sem estoque</span>
+
+                            <div class="indicador-admin-icone">
+                                −
+                            </div>
+                        </div>
+
+                        <strong id="total-sem-estoque">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Produtos zerados
+                        </span>
+
+                    </article>
+
+                </div>
+
+
+                <!-- DASHBOARD: PRODUTOS RECENTES -->
+
+                <div class="dashboard-grid-admin">
+
+                    <section class="card-admin" id="dashboard-produtos-recentes">
+
+                        <div class="cabecalho-card-admin">
+
+                            <div>
+                                <h3>Produtos recentes</h3>
+
+                                <p>
+                                    Últimos produtos adicionados ao catálogo.
+                                </p>
+                            </div>
+
+                            <button
+                                type="button"
+                                class="botao-texto-admin"
+                                data-abrir-secao="produtos">
+
+                                Ver todos
+                            </button>
+
+                        </div>
+
+                        <div class="tabela-admin-wrapper">
+
+                            <table class="tabela-admin">
+
+                                <thead>
+                                    <tr>
+                                        <th>Produto</th>
+                                        <th>Preço</th>
+                                        <th>Estoque</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody id="dashboard-lista-recentes">
+
+                                    <tr class="linha-vazia-admin">
+                                        <td colspan="4">
+                                            Nenhum produto cadastrado.
+                                        </td>
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- DASHBOARD: ALERTAS -->
+
+                    <section class="card-admin" id="dashboard-alertas">
+
+                        <div class="cabecalho-card-admin">
+
+                            <div>
+                                <h3>Alertas de estoque</h3>
+
+                                <p>
+                                    Produtos que precisam de atenção.
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div id="dashboard-lista-alertas">
+
+                            <div class="alerta-vazio-admin">
+                                <span aria-hidden="true">✓</span>
+
+                                <p>
+                                    Nenhum alerta de estoque no momento.
+                                </p>
+                            </div>
+
+                        </div>
+
+                    </section>
+
+                </div>
+
+            </section>
+
+
+            <!-- ========================================
+                 SEÇÃO: PRODUTOS
+            ======================================== -->
+
+            <section
+                id="secao-produtos"
+                class="secao-admin"
+                data-conteudo-admin="produtos"
+                hidden>
+
+                <div class="introducao-admin introducao-admin-flex">
+
+                    <div>
+                        <h2>Gerenciamento de produtos</h2>
+
+                        <p>
+                            Cadastre, edite e gerencie os produtos da GameZone.
+                        </p>
+                    </div>
+
+                    <button
+                        type="button"
+                        id="btn-novo-produto"
+                        class="botao-admin-principal">
+
+                        + Novo produto
+                    </button>
+
+                </div>
+
+
+                <!-- BUSCA E FILTROS -->
+
+                <div class="card-admin filtros-produtos-admin">
+
+                    <div class="campo-busca-admin">
+
+                        <label for="buscar-produto-admin">
+                            Buscar produto
+                        </label>
+
+                        <input
+                            type="search"
+                            id="buscar-produto-admin"
+                            placeholder="Digite o nome do produto...">
+
+                    </div>
+
+                    <div class="campo-filtro-admin">
+
+                        <label for="filtro-categoria-admin">
+                            Categoria
+                        </label>
+
+                        <select id="filtro-categoria-admin">
+
+                            <option value="">Todas as categorias</option>
+                            <option value="hardware">Hardware</option>
+                            <option value="perifericos">Periféricos</option>
+                            <option value="acessorios">Acessórios</option>
+                            <option value="computadores">Computadores</option>
+                            <option value="consoles">Consoles</option>
+                            <option value="jogos">Jogos</option>
+                            <option value="outros">Outros</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABELA DE PRODUTOS -->
+
+                <div class="card-admin tabela-produtos-card">
+
+                    <div class="cabecalho-card-admin">
+
+                        <div>
+                            <h3>Catálogo</h3>
+
+                            <p>
+                                Produtos cadastrados no sistema.
+                            </p>
+                        </div>
+
+                        <span id="contador-produtos-admin">
+                            0 produtos
+                        </span>
+
+                    </div>
+
+                    <div class="tabela-admin-wrapper">
+
+                        <table class="tabela-admin tabela-produtos">
+
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Preço</th>
+                                    <th>Estoque</th>
+                                    <th>Status</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="lista-produtos-admin">
+
+                                <tr class="linha-vazia-admin">
+                                    <td colspan="6">
+                                        Nenhum produto cadastrado.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+
+                <!-- FORMULÁRIO DE CADASTRO / EDIÇÃO -->
+
+                <section
+                    id="formulario-produto-admin"
+                    class="card-admin formulario-produto-admin"
+                    hidden>
+
+                    <div class="cabecalho-card-admin">
+
+                        <div>
+                            <h3 id="titulo-form-produto">
+                                Cadastrar produto
+                            </h3>
+
+                            <p>
+                                Preencha as informações do produto.
+                            </p>
+                        </div>
+
+                        <button
+                            type="button"
+                            id="fechar-form-produto"
+                            class="botao-fechar-admin"
+                            aria-label="Fechar formulário">
+
+                            ×
+                        </button>
+
+                    </div>
+
+
+                    <form id="form-produto-admin">
+
+                        <input
+                            type="hidden"
+                            id="produto-id-admin">
+
+
+                        <!-- IMAGEM -->
+
+                        <div class="formulario-admin-imagem">
+
+                            <label for="imagem-produto-admin">
+                                Imagem do produto
+                            </label>
+
+                            <div id="preview-imagem-produto">
+
+                                <span id="placeholder-imagem-produto">
+                                    Nenhuma imagem selecionada
+                                </span>
+
+                                <img
+                                    id="imagem-preview-admin"
+                                    src=""
+                                    alt="Pré-visualização do produto"
+                                    hidden>
+
+                            </div>
+
+                            <input
+                                type="file"
+                                id="imagem-produto-admin"
+                                accept="image/*">
+
+                            <small>
+                                Selecione uma imagem para o produto.
+                            </small>
+
+                        </div>
+
+
+                        <!-- INFORMAÇÕES -->
+
+                        <div class="formulario-admin-grid">
+
+                            <div class="campo-form-admin campo-form-admin-largo">
+
+                                <label for="nome-produto-admin">
+                                    Nome do produto *
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="nome-produto-admin"
+                                    maxlength="120"
+                                    placeholder="Ex.: Teclado Mecânico"
+                                    required>
+
+                            </div>
+
+
+                            <div class="campo-form-admin">
+
+                                <label for="marca-produto-admin">
+                                    Marca
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="marca-produto-admin"
+                                    maxlength="80"
+                                    placeholder="Nome da marca">
+
+                            </div>
+
+                            <div class="campo-form-admin">
+
+                                <label for="modelo-produto-admin">
+                                    Modelo
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="modelo-produto-admin"
+                                    maxlength="100"
+                                    placeholder="Modelo do produto">
+
+                            </div>
+
+
+                            <div class="campo-form-admin">
+
+                                <label for="categoria-produto-admin">
+                                    Categoria *
+                                </label>
+
+                                <select
+                                    id="categoria-produto-admin"
+                                    required>
+
+                                    <option value="">
+                                        Selecione uma categoria
+                                    </option>
+
+                                    <option value="hardware">
+                                        Hardware
+                                    </option>
+
+                                    <option value="perifericos">
+                                        Periféricos
+                                    </option>
+
+                                    <option value="acessorios">
+                                        Acessórios
+                                    </option>
+
+                                    <option value="computadores">
+                                        Computadores
+                                    </option>
+
+                                    <option value="consoles">
+                                        Consoles
+                                    </option>
+
+                                    <option value="jogos">
+                                        Jogos
+                                    </option>
+
+                                    <option value="outros">
+                                        Outros
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="campo-form-admin">
+
+                                <label for="preco-produto-admin">
+                                    Preço (R$) *
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="preco-produto-admin"
+                                    min="0.01"
+                                    step="0.01"
+                                    placeholder="0,00"
+                                    required>
+
+                            </div>
+
+
+                            <div class="campo-form-admin">
+
+                                <label for="estoque-produto-admin">
+                                    Quantidade em estoque *
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="estoque-produto-admin"
+                                    min="0"
+                                    step="1"
+                                    placeholder="0"
+                                    required>
+
+                            </div>
+
+
+                            <div class="campo-form-admin">
+
+                                <label for="status-produto-admin">
+                                    Status do produto
+                                </label>
+
+                                <select id="status-produto-admin">
+
+                                    <option value="ativo">
+                                        Ativo
+                                    </option>
+
+                                    <option value="inativo">
+                                        Inativo
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+                            <div class="campo-form-admin">
+
+                                <label for="garantia-produto-admin">
+                                    Garantia
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="garantia-produto-admin"
+                                    maxlength="60"
+                                    placeholder="Ex.: 12 meses">
+
+                            </div>
+
+
+                            <div class="campo-form-admin campo-form-admin-largo">
+
+                                <label for="descricao-produto-admin">
+                                    Descrição *
+                                </label>
+
+                                <textarea
+                                    id="descricao-produto-admin"
+                                    rows="5"
+                                    maxlength="2000"
+                                    placeholder="Descreva as características do produto..."
+                                    required></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- AÇÕES DO FORMULÁRIO -->
+
+                        <div class="acoes-form-produto-admin">
+
+                            <button
+                                type="button"
+                                id="cancelar-form-produto"
+                                class="botao-admin-secundario">
+
+                                Cancelar
+                            </button>
+
+                            <button
+                                type="reset"
+                                id="limpar-form-produto"
+                                class="botao-admin-secundario">
+
+                                Limpar campos
+                            </button>
+
+                            <button
+                                type="submit"
+                                id="salvar-produto-admin"
+                                class="botao-admin-principal">
+
+                                Salvar produto
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+            </section>
+
+
+            <!-- ========================================
+                 SEÇÃO: ESTOQUE
+            ======================================== -->
+
+            <section
+                id="secao-estoque"
+                class="secao-admin"
+                data-conteudo-admin="estoque"
+                hidden>
+
+                <div class="introducao-admin">
+
+                    <h2>Controle de estoque</h2>
+
+                    <p>
+                        Acompanhe a quantidade de unidades disponíveis
+                        e identifique produtos que precisam de reposição.
+                    </p>
+
+                </div>
+
+
+                <!-- INDICADORES DE ESTOQUE -->
+
+                <div id="indicadores-estoque-admin">
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Total de unidades</span>
+                            <div class="indicador-admin-icone">▤</div>
+                        </div>
+
+                        <strong id="estoque-total-unidades">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Somatório do estoque
+                        </span>
+
+                    </article>
+
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Estoque saudável</span>
+                            <div class="indicador-admin-icone">✓</div>
+                        </div>
+
+                        <strong id="estoque-saudavel">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Acima de 5 unidades
+                        </span>
+
+                    </article>
+
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Estoque baixo</span>
+                            <div class="indicador-admin-icone">!</div>
+                        </div>
+
+                        <strong id="estoque-baixo-total">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Até 5 unidades
+                        </span>
+
+                    </article>
+
+
+                    <article class="card-indicador-admin">
+
+                        <div class="indicador-admin-topo">
+                            <span>Indisponíveis</span>
+                            <div class="indicador-admin-icone">−</div>
+                        </div>
+
+                        <strong id="estoque-zerado-total">0</strong>
+
+                        <span class="indicador-admin-descricao">
+                            Sem unidades
+                        </span>
+
+                    </article>
+
+                </div>
+
+
+                <!-- BUSCA DE ESTOQUE -->
+
+                <div class="card-admin filtros-produtos-admin">
+
+                    <div class="campo-busca-admin">
+
+                        <label for="buscar-estoque-admin">
+                            Buscar produto
+                        </label>
+
+                        <input
+                            type="search"
+                            id="buscar-estoque-admin"
+                            placeholder="Digite o nome do produto...">
+
+                    </div>
+
+                    <div class="campo-filtro-admin">
+
+                        <label for="filtro-status-estoque-admin">
+                            Situação do estoque
+                        </label>
+
+                        <select id="filtro-status-estoque-admin">
+
+                            <option value="">
+                                Todas as situações
+                            </option>
+
+                            <option value="normal">
+                                Estoque saudável
+                            </option>
+
+                            <option value="baixo">
+                                Estoque baixo
+                            </option>
+
+                            <option value="zerado">
+                                Sem estoque
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABELA DE ESTOQUE -->
+
+                <div class="card-admin tabela-estoque-card">
+
+                    <div class="cabecalho-card-admin">
+
+                        <div>
+                            <h3>Inventário</h3>
+
+                            <p>
+                                Quantidade disponível por produto.
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="tabela-admin-wrapper">
+
+                        <table class="tabela-admin">
+
+                            <thead>
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Categoria</th>
+                                    <th>Quantidade</th>
+                                    <th>Situação</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="lista-estoque-admin">
+
+                                <tr class="linha-vazia-admin">
+                                    <td colspan="5">
+                                        Nenhum produto cadastrado.
+                                    </td>
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script type="module" src="../JavaScript - JS/Padrão.js"></script>
+    <script type="module" src="JavaScript JS - Administrador/admin.js"></script>
+
+</body>
+
+</html>

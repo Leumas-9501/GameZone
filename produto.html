@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confira os detalhes, as características e o preço dos produtos da GameZone.">
+
+    <title>Produto | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/produto.css">
+</head>
+
+<body>
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+            <!-- MENU HAMBÚRGUER -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html" aria-current="page">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+
+                <!-- ENTRAR: DIREITA NO DESKTOP, DENTRO DO HAMBÚRGUER EM TELAS MENORES -->
+                <a href="login.html" id="login-link">Entrar</a>
+            </nav>
+
+            <!-- CARRINHO -->
+            <div id="acoes-cabecalho">
+
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras">
+                    Carrinho
+                    <span id="cart-count" aria-label="Quantidade de itens">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo-principal">
+
+        <!-- CAMINHO DE NAVEGAÇÃO -->
+        <nav id="breadcrumb" aria-label="Caminho de navegação">
+            <ol>
+                <li><a href="index.html">Início</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li aria-current="page">Detalhes do produto</li>
+            </ol>
+        </nav>
+
+        <!-- INFORMAÇÕES PRINCIPAIS DO PRODUTO -->
+        <section id="detalhes-produto" aria-labelledby="produto-nome">
+
+            <!-- GALERIA DE IMAGENS -->
+            <div id="galeria-produto">
+
+                <div id="imagem-principal-produto">
+                    <img id="produto-imagem-principal" src="" alt="Imagem do produto">
+                </div>
+
+            </div>
+
+            <!-- DADOS DO PRODUTO -->
+            <div id="informacoes-produto">
+
+                <p id="produto-categoria"></p>
+
+                <h1 id="produto-nome">Carregando produto...</h1>
+
+                <p id="produto-codigo">
+                    Código: <span id="produto-sku"></span>
+                </p>
+
+                <p id="produto-descricao-curta">
+                    
+                </p>
+
+                <!-- AVALIAÇÃO, CASO SEJA IMPLEMENTADA -->
+                <div id="produto-avaliacao" hidden>
+                    <span id="produto-nota">0,0</span>
+                    <span aria-hidden="true">/ 5</span>
+                    <span id="produto-total-avaliacoes">
+                        Nenhuma avaliação
+                    </span>
+                </div>
+
+                <!-- PREÇO -->
+                <div id="produto-precos">
+                    <p id="produto-preco-anterior" hidden>
+                        De: <span id="produto-valor-anterior"></span>
+                    </p>
+
+                    <p id="produto-preco">
+                        Carregando preço...
+                    </p>
+
+                    <p id="produto-condicao-pagamento">
+                        Condições de pagamento a definir.
+                    </p>
+                </div>
+
+                <!-- DISPONIBILIDADE -->
+                <p id="produto-disponibilidade">
+                    
+                </p>
+
+                <!-- QUANTIDADE -->
+                <div id="selecao-quantidade">
+                    <label for="produto-quantidade">Quantidade:</label>
+
+                    <input type="number" id="produto-quantidade" name="quantidade" value="1" min="1" step="1"
+                        inputmode="numeric">
+                </div>
+
+                <!-- AÇÕES -->
+                <div id="acoes-produto">
+
+                    <button type="button" id="adicionar-carrinho">
+                        Adicionar ao carrinho
+                    </button>
+
+                    <a href="carrinho.html" id="ir-para-carrinho">
+                        Ver carrinho
+                    </a>
+
+                </div>
+
+                <p id="mensagem-produto" role="status" aria-live="polite"></p>
+
+            </div>
+        </section>
+
+        <!-- DESCRIÇÃO COMPLETA -->
+        <section id="descricao-produto" aria-labelledby="titulo-descricao-produto">
+            <h2 id="titulo-descricao-produto">Descrição do produto</h2>
+
+            <div id="produto-descricao-completa">
+                <p>
+                    
+                </p>
+            </div>
+        </section>
+
+        <!-- ESPECIFICAÇÕES TÉCNICAS -->
+        <section id="especificacoes-produto" aria-labelledby="titulo-especificacoes">
+            <h2 id="titulo-especificacoes">Especificações técnicas</h2>
+
+            <dl id="lista-especificacoes">
+                <div>
+                    <dt>Marca</dt>
+                    <dd id="produto-marca"></dd>
+                </div>
+
+                <div>
+                    <dt>Modelo</dt>
+                    <dd id="produto-modelo"></dd>
+                </div>
+
+                <div>
+                    <dt>Categoria</dt>
+                    <dd id="produto-categoria-detalhe"></dd>
+                </div>
+
+                <div>
+                    <dt>Garantia</dt>
+                    <dd id="produto-garantia"></dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- PRODUTOS RELACIONADOS -->
+        <section id="produtos-relacionados" aria-labelledby="titulo-relacionados">
+            <h2 id="titulo-relacionados">Você também pode gostar</h2>
+
+            <div id="lista-produtos-relacionados">
+
+                <article class="produto-card">
+                    <a href="produto.html">
+                        <img src="assets/images/produto-exemplo-2.png"
+                            alt="Imagem ilustrativa de um produto relacionado">
+
+                        <h3>Produto relacionado</h3>
+                    </a>
+
+                    <p class="produto-preco">Preço a definir</p>
+
+                    <a href="produto.html" class="botao-detalhes">
+                        Ver detalhes
+                    </a>
+                </article>
+
+                <article class="produto-card">
+                    <a href="produto.html">
+                        <img src="assets/images/produto-exemplo-3.png"
+                            alt="Imagem ilustrativa de outro produto relacionado">
+
+                        <h3>Produto relacionado</h3>
+                    </a>
+
+                    <p class="produto-preco">Preço a definir</p>
+
+                    <a href="produto.html" class="botao-detalhes">
+                        Ver detalhes
+                    </a>
+                </article>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+            <div class="rodape-marca">
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+            </div>
+
+            <nav aria-label="Links do rodapé">
+                <h2>Navegação</h2>
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-conta">
+                <h2>Sua conta</h2>
+
+                <ul>
+                    <li><a href="termos.html">Termos e Condições de Uso</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="trocas.html">Política de Trocas, Devoluções e Reembolso</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-informacoes">
+                <p>
+                    &copy; <span id="current-year">2026</span> GameZone.
+                    Todos os direitos reservados.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+    <script type="module" src="JavaScript - JS/produto.js"></script>
+
+</body>
+
+</html>

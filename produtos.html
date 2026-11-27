@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Explore o catálogo da GameZone e encontre jogos, periféricos e acessórios gamer.">
+
+    <title>Produtos | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/produtos.css">
+</head>
+
+<body>
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+            <!-- MENU HAMBÚRGUER -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li>
+                        <a href="index.html">Início</a>
+                    </li>
+                    <li>
+                        <a href="produtos.html" aria-current="page">Produtos</a>
+                    </li>
+                    <li>
+                        <a href="sobre.html">Sobre nós</a>
+                    </li>
+                </ul>
+
+                <!-- NO COMPUTADOR FICARÁ À DIREITA;
+                     EM CELULARES E TABLETS FICARÁ NO HAMBÚRGUER -->
+                <a href="login.html" id="login-link">Entrar</a>
+            </nav>
+
+            <!-- CARRINHO -->
+            <div id="acoes-cabecalho">
+
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras">
+                    Carrinho
+                    <span id="cart-count" aria-label="Quantidade de itens">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo-principal">
+
+        <!-- APRESENTAÇÃO DO CATÁLOGO -->
+        <section id="catalogo-introducao" aria-labelledby="titulo-catalogo">
+            <div class="container">
+                <p class="texto-destaque">Encontre seu próximo upgrade</p>
+
+                <h1 id="titulo-catalogo">Nossos produtos</h1>
+
+                <p>
+                    Explore jogos, periféricos e acessórios para sua experiência gamer.
+                </p>
+            </div>
+        </section>
+
+        <!-- PESQUISA E FILTROS -->
+        <section id="catalogo" aria-label="Catálogo de produtos">
+            <div class="container">
+
+                <!-- BARRA DE PESQUISA -->
+                <form id="form-pesquisa" role="search" action="produtos.html" method="get">
+                    <label for="pesquisa-produtos">Pesquisar produtos</label>
+
+                    <input type="search" id="pesquisa-produtos" name="busca"
+                        placeholder="Digite o nome de um produto...">
+
+                    <button type="submit">Pesquisar</button>
+                </form>
+
+                <!-- ÁREA DOS FILTROS -->
+                <aside id="filtros-produtos" aria-labelledby="titulo-filtros">
+                    <h2 id="titulo-filtros">Filtrar produtos</h2>
+
+                    <form id="form-filtros" action="produtos.html" method="get">
+
+                        <!-- CATEGORIA -->
+                        <fieldset>
+                            <legend>Categoria</legend>
+
+                            <label>
+                                <input type="radio" name="categoria" value="todas" checked>
+                                Todas as categorias
+                            </label>
+
+                            <label>
+                                <input type="radio" name="categoria" value="jogos">
+                                Jogos
+                            </label>
+
+                            <label>
+                                <input type="radio" name="categoria" value="perifericos">
+                                Periféricos
+                            </label>
+
+                            <label>
+                                <input type="radio" name="categoria" value="acessorios">
+                                Acessórios
+                            </label>
+                        </fieldset>
+
+                        <!-- FAIXA DE PREÇO -->
+                        <fieldset>
+                            <legend>Faixa de preço</legend>
+
+                            <label for="preco-minimo">Preço mínimo (R$)</label>
+                            <input type="number" id="preco-minimo" name="precoMin" min="0" step="0.01"
+                                placeholder="0,00">
+
+                            <label for="preco-maximo">Preço máximo (R$)</label>
+                            <input type="number" id="preco-maximo" name="precoMax" min="0" step="0.01"
+                                placeholder="999,99">
+                        </fieldset>
+
+                        <!-- DISPONIBILIDADE -->
+                        <fieldset>
+                            <legend>Disponibilidade</legend>
+
+                            <label>
+                                <input type="checkbox" name="disponivel" value="sim">
+                                Somente produtos disponíveis
+                            </label>
+                        </fieldset>
+
+                        <button type="submit">Aplicar filtros</button>
+
+                        <a href="produtos.html" id="limpar-filtros">
+                            Limpar filtros
+                        </a>
+                    </form>
+                </aside>
+
+                <!-- RESULTADOS -->
+                <section id="resultados-catalogo" aria-labelledby="titulo-resultados">
+                    <div id="cabecalho-resultados">
+                        <h2 id="titulo-resultados">Todos os produtos</h2>
+
+                        <div id="ordenacao-produtos">
+                            <label for="ordenar-por">Ordenar por:</label>
+
+                            <select id="ordenar-por" name="ordenar">
+                                <option value="relevancia">Relevância</option>
+                                <option value="menor-preco">Menor preço</option>
+                                <option value="maior-preco">Maior preço</option>
+                                <option value="nome-az">Nome: A a Z</option>
+                                <option value="nome-za">Nome: Z a A</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <p id="quantidade-resultados">
+                        Produtos disponíveis no catálogo
+                    </p>
+
+                    <!-- LISTA DE PRODUTOS -->
+                    <div id="lista-produtos">
+                        <!-- Os produtos serão carregados dinamicamente pelo JavaScript -->
+                    </div>
+
+                    <!-- ESTADO SEM RESULTADOS -->
+                    <div id="nenhum-produto" hidden>
+                        <h3>Nenhum produto encontrado</h3>
+
+                        <p>
+                            Não encontramos produtos para os filtros selecionados.
+                            Tente alterar sua pesquisa.
+                        </p>
+
+                        <a href="produtos.html">Ver todos os produtos</a>
+                    </div>
+
+                    <!-- PAGINAÇÃO -->
+                    <nav id="paginacao" aria-label="Paginação do catálogo" hidden>
+                        <!-- Os controles serão gerados dinamicamente pelo JavaScript -->
+                    </nav>
+
+                </section>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+            <div class="rodape-marca">
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+            </div>
+
+            <nav aria-label="Links do rodapé">
+                <h2>Navegação</h2>
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-conta">
+                <h2>Sua conta</h2>
+
+                <ul>
+                    <li><a href="termos.html">Termos e Condições de Uso</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="trocas.html">Política de Trocas, Devoluções e Reembolso</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-informacoes">
+                <p>
+                    &copy; <span id="current-year">2026</span> GameZone.
+                    Todos os direitos reservados.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+    <script type="module" src="JavaScript - JS/produtos.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Recupere o acesso à sua conta GameZone por e-mail.">
+
+    <title>Recuperar Senha | GameZone</title>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/recuperar-senha.css">
+</head>
+<body>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo-principal">
+
+        <section id="recuperar-senha">
+            <div class="container-recuperar-senha">
+
+                <!-- Voltar ao início -->
+                <nav id="links-recuperacao-topo" aria-label="Navegação auxiliar">
+                    <a href="index.html">← Voltar ao início</a>
+                </nav>
+
+                <!-- Logo GameZone -->
+                <p id="marca-recuperacao">
+                    GAME<span>ZONE</span>
+                </p>
+
+                <!-- Introdução -->
+                <header id="recuperacao-introducao">
+                    <h1>Esqueceu sua senha?</h1>
+
+                    <p>
+                        Não se preocupe! Informe o e-mail associado à sua conta
+                        e enviaremos as instruções para recuperar seu acesso.
+                    </p>
+                </header>
+
+                <!-- Formulário de recuperação -->
+                <form id="form-recuperar-senha">
+
+                    <div class="campo-formulario">
+                        <label for="recuperacao-email">E-mail cadastrado</label>
+
+                        <input
+                            type="email"
+                            id="recuperacao-email"
+                            name="email"
+                            autocomplete="email"
+                            placeholder="Digite seu e-mail"
+                            required
+                        >
+                    </div>
+
+                    <p id="mensagem-recuperacao" role="status" aria-live="polite"></p>
+
+                    <button type="submit" id="botao-recuperar-senha">
+                        Enviar instruções
+                    </button>
+
+                </form>
+
+                <!-- Orientações -->
+                <section id="orientacoes-recuperacao">
+                    <h2>O que acontece depois?</h2>
+
+                    <ol>
+                        <li>Você informa o e-mail utilizado na sua conta.</li>
+                        <li>Solicita o envio das instruções de recuperação.</li>
+                        <li>Verifica sua caixa de entrada e a pasta de spam.</li>
+                        <li>Segue as instruções recebidas para redefinir a senha.</li>
+                    </ol>
+
+                    <p>
+                        Por segurança, a mensagem de confirmação não deverá revelar
+                        se determinado e-mail está ou não cadastrado na GameZone.
+                    </p>
+                </section>
+
+                <!-- Navegação auxiliar -->
+                <nav id="links-recuperacao" aria-label="Links de acesso">
+                    <a href="login.html">Voltar para o login</a>
+                    <a href="cadastro.html">Criar uma conta</a>
+                </nav>
+
+            </div>
+        </section>
+
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Finalize sua compra na GameZone com praticidade e segurança.">
+
+    <title>Finalizar Compra | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/checkout.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+
+            <!-- BOTÃO DO MENU PARA CELULARES E TABLETS -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="produtos.html">
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobre.html">
+                            Sobre nós
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- ENTRAR -->
+                <a href="login.html" id="login-link">
+                    Entrar
+                </a>
+            </nav>
+
+
+            <!-- AÇÕES DO CABEÇALHO -->
+            <div id="acoes-cabecalho">
+
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras">
+                    Carrinho
+
+                    <span id="cart-count" aria-label="Quantidade de itens">
+                        0
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo-principal">
+
+        <section id="checkout-introducao">
+            <div class="container">
+                <h1>Finalizar compra</h1>
+                <p>Confira seus dados e os produtos antes de concluir o pedido.</p>
+
+                <nav aria-label="Etapas da compra">
+                    <ol>
+                        <li><a href="carrinho.html">Carrinho</a></li>
+                        <li aria-current="step">Identificação e pagamento</li>
+                    </ol>
+                </nav>
+            </div>
+        </section>
+
+        <!-- Formulário de checkout -->
+        <section id="checkout">
+            <div class="container">
+
+                <form id="form-checkout">
+
+                    <!-- Dados do comprador -->
+                    <fieldset id="dados-comprador">
+                        <legend>1. Dados do comprador</legend>
+
+                        <div>
+                            <label for="checkout-nome">Nome completo</label>
+                            <input type="text" id="checkout-nome" name="nome" autocomplete="name" required>
+                        </div>
+
+                        <div>
+                            <label for="checkout-email">E-mail</label>
+                            <input type="email" id="checkout-email" name="email" autocomplete="email" required>
+                        </div>
+
+                        <div>
+                            <label for="checkout-telefone">Telefone</label>
+                            <input type="tel" id="checkout-telefone" name="telefone" autocomplete="tel"
+                                placeholder="(00) 00000-0000" required>
+                        </div>
+
+                        <p id="mensagem-comprador" role="status"></p>
+                    </fieldset>
+
+                    <!-- Endereço de entrega -->
+                    <fieldset id="endereco-entrega">
+                        <legend>2. Endereço de entrega</legend>
+
+                        <div>
+                            <label for="endereco-cep">CEP</label>
+                            <input type="text" id="endereco-cep" name="cep" autocomplete="postal-code"
+                                inputmode="numeric" placeholder="00000-000" required>
+                        </div>
+
+                        <div>
+                            <label for="endereco-rua">Rua ou avenida</label>
+                            <input type="text" id="endereco-rua" name="rua" autocomplete="address-line1" required>
+                        </div>
+
+                        <div>
+                            <label for="endereco-numero">Número</label>
+                            <input type="text" id="endereco-numero" name="numero" required>
+                        </div>
+
+                        <div>
+                            <label for="endereco-complemento">Complemento</label>
+                            <input type="text" id="endereco-complemento" name="complemento" autocomplete="address-line2"
+                                placeholder="Apartamento, bloco, etc.">
+                        </div>
+
+                        <div>
+                            <label for="endereco-bairro">Bairro</label>
+                            <input type="text" id="endereco-bairro" name="bairro" required>
+                        </div>
+
+                        <div>
+                            <label for="endereco-cidade">Cidade</label>
+                            <input type="text" id="endereco-cidade" name="cidade" autocomplete="address-level2"
+                                required>
+                        </div>
+
+                        <div>
+                            <label for="endereco-estado">Estado</label>
+                            <select id="endereco-estado" name="estado" autocomplete="address-level1" required>
+                                <option value="">Selecione o estado</option>
+                                <option value="AC">Acre</option>
+                                <option value="AL">Alagoas</option>
+                                <option value="AP">Amapá</option>
+                                <option value="AM">Amazonas</option>
+                                <option value="BA">Bahia</option>
+                                <option value="CE">Ceará</option>
+                                <option value="DF">Distrito Federal</option>
+                                <option value="ES">Espírito Santo</option>
+                                <option value="GO">Goiás</option>
+                                <option value="MA">Maranhão</option>
+                                <option value="MT">Mato Grosso</option>
+                                <option value="MS">Mato Grosso do Sul</option>
+                                <option value="MG">Minas Gerais</option>
+                                <option value="PA">Pará</option>
+                                <option value="PB">Paraíba</option>
+                                <option value="PR">Paraná</option>
+                                <option value="PE">Pernambuco</option>
+                                <option value="PI">Piauí</option>
+                                <option value="RJ">Rio de Janeiro</option>
+                                <option value="RN">Rio Grande do Norte</option>
+                                <option value="RS">Rio Grande do Sul</option>
+                                <option value="RO">Rondônia</option>
+                                <option value="RR">Roraima</option>
+                                <option value="SC">Santa Catarina</option>
+                                <option value="SP">São Paulo</option>
+                                <option value="SE">Sergipe</option>
+                                <option value="TO">Tocantins</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="endereco-referencia">Ponto de referência</label>
+                            <input type="text" id="endereco-referencia" name="referencia" placeholder="Opcional">
+                        </div>
+
+                        <p id="mensagem-endereco" role="status"></p>
+                    </fieldset>
+
+                    <!-- Forma de entrega -->
+                    <fieldset id="opcoes-entrega">
+                        <legend>3. Forma de entrega</legend>
+
+                        <div>
+                            <input type="radio" id="entrega-padrao" name="entrega" value="padrao" required>
+                            <label for="entrega-padrao">
+                                Entrega padrão
+                            </label>
+                            <p id="prazo-padrao">
+                                Prazo e valor serão informados conforme o endereço.
+                            </p>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="entrega-expressa" name="entrega" value="expressa">
+                            <label for="entrega-expressa">
+                                Entrega expressa
+                            </label>
+                            <p id="prazo-expressa">
+                                Disponibilidade, prazo e valor sujeitos à região.
+                            </p>
+                        </div>
+
+                        <p id="mensagem-entrega" role="status"></p>
+                    </fieldset>
+
+                    <!-- Revisão dos produtos -->
+                    <section id="revisao-pedido">
+                        <h2>4. Revise seu pedido</h2>
+
+                        <div id="lista-itens-checkout">
+
+                            <!-- Item ilustrativo: será preenchido pelo JavaScript -->
+                            <article class="item-checkout" data-product-id="exemplo-1">
+                                <img src="assets/images/produto-exemplo-1.png" alt="Imagem ilustrativa do produto"
+                                    width="100" height="100">
+
+                                <div>
+                                    <h3>Produto de exemplo</h3>
+                                    <p>Quantidade: <span class="quantidade-item">1</span></p>
+                                    <p>
+                                        Subtotal:
+                                        <span class="subtotal-item">R$ 0,00</span>
+                                    </p>
+                                </div>
+                            </article>
+
+                        </div>
+
+                        <p id="mensagem-itens-checkout" role="status"></p>
+
+                        <a href="carrinho.html">Voltar ao carrinho para editar</a>
+                    </section>
+
+                    <!-- Forma de pagamento -->
+                    <fieldset id="forma-pagamento">
+                        <legend>5. Forma de pagamento</legend>
+
+                        <div>
+                            <input type="radio" id="pagamento-pix" name="pagamento" value="pix" required>
+                            <label for="pagamento-pix">Pix</label>
+                            <p>As instruções de pagamento serão apresentadas após a integração.</p>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pagamento-cartao" name="pagamento" value="cartao">
+                            <label for="pagamento-cartao">Cartão de crédito</label>
+                            <p>
+                                O pagamento será processado por um provedor seguro.
+                            </p>
+                        </div>
+
+                        <div>
+                            <input type="radio" id="pagamento-boleto" name="pagamento" value="boleto">
+                            <label for="pagamento-boleto">Boleto bancário</label>
+                            <p>Disponibilidade sujeita ao provedor de pagamento.</p>
+                        </div>
+
+                        <p id="mensagem-pagamento" role="status"></p>
+                    </fieldset>
+
+                    <!-- Observações -->
+                    <div id="observacoes-pedido">
+                        <label for="observacoes">Observações do pedido</label>
+                        <textarea id="observacoes" name="observacoes" rows="4"
+                            placeholder="Alguma informação adicional? (Opcional)"></textarea>
+                    </div>
+
+                    <!-- Resumo financeiro -->
+                    <aside id="resumo-checkout">
+                        <h2>Resumo do pedido</h2>
+
+                        <dl>
+                            <div>
+                                <dt>Produtos</dt>
+                                <dd id="checkout-subtotal">R$ 0,00</dd>
+                            </div>
+
+                            <div>
+                                <dt>Desconto</dt>
+                                <dd id="checkout-desconto">R$ 0,00</dd>
+                            </div>
+
+                            <div>
+                                <dt>Frete</dt>
+                                <dd id="checkout-frete">A calcular</dd>
+                            </div>
+
+                            <div>
+                                <dt>Total</dt>
+                                <dd id="checkout-total">R$ 0,00</dd>
+                            </div>
+                        </dl>
+
+                        <p id="mensagem-checkout" role="status"></p>
+
+                        <button type="submit" id="confirmar-pedido">
+                            Confirmar pedido
+                        </button>
+
+                        <p>
+                            Ao confirmar, você concorda com os
+                            <a href="sobre.html#termos">termos de compra</a>
+                            da GameZone.
+                        </p>
+
+                        <a href="produtos.html">Continuar comprando</a>
+                    </aside>
+
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+            <div class="rodape-marca">
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+            </div>
+
+            <nav aria-label="Links do rodapé">
+                <h2>Navegação</h2>
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-conta">
+                <h2>Sua conta</h2>
+
+                <ul>
+                    <li><a href="login.html">Entrar</a></li>
+                    <li><a href="cadastro.html">Criar conta</a></li>
+                    <li><a href="perfil.html">Meu perfil</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-informacoes">
+                <p>
+                    &copy; <span id="current-year">2026</span> GameZone.
+                    Todos os direitos reservados.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+</body>
+
+</html>

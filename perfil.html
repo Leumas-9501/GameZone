@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0d0d12">
+    <meta name="description" content="Gerencie seus dados pessoais e suas preferências na GameZone.">
+
+    <title>Meu Perfil | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/perfil.css">
+</head>
+
+<body>
+
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+
+            <!-- BOTÃO DO MENU PARA CELULARES E TABLETS -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="produtos.html">
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobre.html">
+                            Sobre nós
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- ENTRAR -->
+                <p href="" id="login-link">
+                    Entrar
+                </p>
+            </nav>
+
+
+            <!-- AÇÕES DO CABEÇALHO -->
+            <div id="acoes-cabecalho">
+
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras">
+                    Carrinho
+
+                    <span id="cart-count" aria-label="Quantidade de itens">
+                        0
+                    </span>
+                </a>
+
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo-principal">
+
+        <section id="perfil-introducao">
+            <div class="container">
+                <h1>Meu perfil</h1>
+                <p>Gerencie suas informações pessoais e as configurações da sua conta.</p>
+            </div>
+        </section>
+
+        <div id="conteudo-perfil" class="container">
+
+            <!-- Navegação do perfil -->
+            <nav id="navegacao-perfil" aria-label="Seções do perfil">
+                <ul>
+                    <li><a href="#dados-perfil">Meus dados</a></li>
+                    <li><a href="#editar-perfil">Editar informações</a></li>
+                    <li><a href="#seguranca-conta">Segurança</a></li>
+                    <li><a href="#excluir-conta">Excluir conta</a></li>
+                </ul>
+            </nav>
+
+            <!-- Resumo da conta -->
+            <section id="dados-perfil">
+                <h2>Informações da conta</h2>
+
+                <div id="resumo-usuario">
+
+                    <div id="foto-perfil-container">
+
+                        <button type="button" id="botao-foto-perfil" aria-label="Alterar foto de perfil"
+                            title="Alterar foto de perfil">
+
+                            <img src="Imagens/avatar-padrao.png" alt="Foto de perfil" id="foto-perfil" width="160"
+                                height="160">
+
+                            <span id="icone-alterar-foto" aria-hidden="true">📎</span>
+
+                        </button>
+
+                        <input type="file" id="arquivo-foto-perfil" accept="image/png, image/jpeg, image/webp" hidden>
+
+                        <div id="acoes-foto-perfil" hidden>
+                            <button type="button" id="salvar-foto-perfil">
+                                Salvar foto
+                            </button>
+
+                            <button type="button" id="cancelar-foto-perfil">
+                                Cancelar
+                            </button>
+                        </div>
+
+                        <button type="button" id="remover-foto-perfil">
+                            Restaurar foto padrão
+                        </button>
+
+                        <p id="mensagem-foto-perfil" role="status" aria-live="polite"></p>
+
+                        <p id="nome-exibicao">Carregando nome...</p>
+                        <p id="email-exibicao">Carregando e-mail...</p>
+                    </div>
+
+                    <dl id="informacoes-usuario">
+
+                        <div>
+                            <dt>Nome</dt>
+                            <dd id="perfil-nome">Não informado</dd>
+                        </div>
+
+                        <div>
+                            <dt>Sobrenome</dt>
+                            <dd id="perfil-sobrenome">Não informado</dd>
+                        </div>
+
+                        <div>
+                            <dt>CPF</dt>
+                            <dd id="perfil-cpf">Não informado</dd>
+                        </div>
+
+                        <div>
+                            <dt>Data de nascimento</dt>
+                            <dd id="perfil-nascimento">Não informada</dd>
+                        </div>
+
+                        <div>
+                            <dt>E-mail</dt>
+                            <dd id="perfil-email">Não informado</dd>
+                        </div>
+
+                        <div>
+                            <dt>Data de criação da conta</dt>
+                            <dd id="perfil-data-criacao">Não disponível</dd>
+                        </div>
+
+                    </dl>
+
+                </div>
+            </section>
+
+            <!-- Edição de informações pessoais -->
+            <section id="editar-perfil">
+                <h2>Editar informações</h2>
+                <p>Atualize seus dados pessoais sempre que necessário.</p>
+
+                <form id="form-editar-perfil">
+
+                    <fieldset>
+                        <legend>Dados pessoais</legend>
+
+                        <div class="campo-formulario">
+                            <label for="editar-nome">Nome</label>
+                            <input type="text" id="editar-nome" name="nome" autocomplete="given-name" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="editar-sobrenome">Sobrenome</label>
+                            <input type="text" id="editar-sobrenome" name="sobrenome" autocomplete="family-name"
+                                required>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" id="salvar-dados-perfil">
+                        Salvar alterações
+                    </button>
+
+                    <p id="mensagem-editar-perfil" role="status" aria-live="polite"></p>
+
+                </form>
+            </section>
+
+            <!-- Segurança e aparência -->
+            <section id="seguranca-conta">
+
+                <h2>Segurança e aparência</h2>
+                <p>Gerencie as credenciais e as preferências da sua conta.</p>
+
+                <!-- Alteração de e-mail -->
+                <form id="form-alterar-email">
+
+                    <fieldset>
+                        <legend>Alterar e-mail</legend>
+
+                        <div class="campo-formulario">
+                            <label for="novo-email">Novo e-mail</label>
+                            <input type="email" id="novo-email" name="novoEmail" autocomplete="email"
+                                placeholder="novoemail@exemplo.com" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="senha-confirmar-email">
+                                Senha atual
+                            </label>
+                            <input type="password" id="senha-confirmar-email" name="senhaAtual"
+                                autocomplete="current-password" required>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" id="salvar-novo-email">
+                        Atualizar e-mail
+                    </button>
+
+                    <p id="mensagem-alterar-email" role="status" aria-live="polite"></p>
+
+                </form>
+
+
+                <!-- Alteração de senha -->
+                <form id="form-alterar-senha">
+
+                    <fieldset>
+                        <legend>Alterar senha</legend>
+
+                        <div class="campo-formulario">
+                            <label for="senha-atual">Senha atual</label>
+                            <input type="password" id="senha-atual" name="senhaAtual" autocomplete="current-password"
+                                required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="nova-senha">Nova senha</label>
+                            <input type="password" id="nova-senha" name="novaSenha" autocomplete="new-password"
+                                minlength="8" required>
+                        </div>
+
+                        <div class="campo-formulario">
+                            <label for="confirmar-nova-senha">
+                                Confirmar nova senha
+                            </label>
+                            <input type="password" id="confirmar-nova-senha" name="confirmarNovaSenha"
+                                autocomplete="new-password" minlength="8" required>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" id="salvar-nova-senha">
+                        Atualizar senha
+                    </button>
+
+                    <p id="mensagem-alterar-senha" role="status" aria-live="polite"></p>
+
+                </form>
+
+
+                <!-- Aparência -->
+                <div id="configuracao-aparencia">
+
+                    <h3>Aparência</h3>
+                    <p>Escolha o tema visual que deseja utilizar no GameZone.</p>
+
+                    <div class="campo-formulario">
+                        <label for="tema-aparencia">Tema do site</label>
+
+                        <select id="tema-aparencia" name="tema">
+                            <option value="escuro">Tema escuro</option>
+                            <option value="claro">Tema claro</option>
+                        </select>
+                    </div>
+
+                    <p id="mensagem-aparencia" role="status" aria-live="polite"></p>
+
+                </div>
+
+            </section>
+
+            <!-- Encerramento da sessão -->
+            <section id="sair-conta">
+                <h2>Sair da conta</h2>
+                <p>Encerre sua sessão neste dispositivo.</p>
+
+                <button type="button" id="botao-logout">
+                    Sair da conta
+                </button>
+
+                <p id="mensagem-logout" role="status" aria-live="polite"></p>
+            </section>
+
+            <!-- Exclusão da conta -->
+            <section id="excluir-conta">
+                <h2>Excluir conta</h2>
+
+                <p>
+                    A exclusão da conta é uma ação permanente.
+                    Seus dados pessoais e arquivos associados deverão ser tratados
+                    conforme a política de privacidade da GameZone.
+                </p>
+
+                <p>
+                    Poderá ser necessário confirmar sua identidade antes de concluir
+                    a exclusão.
+                </p>
+
+                <form id="form-excluir-conta">
+
+                    <div class="campo-formulario">
+                        <label for="senha-excluir-conta">
+                            Confirme sua senha
+                        </label>
+                        <input type="password" id="senha-excluir-conta" name="senhaConfirmacao"
+                            autocomplete="current-password" required>
+                    </div>
+
+                    <div>
+                        <input type="checkbox" id="confirmar-exclusao" name="confirmarExclusao" required>
+
+                        <label for="confirmar-exclusao">
+                            Entendo que esta ação é permanente e desejo solicitar
+                            a exclusão da minha conta.
+                        </label>
+                    </div>
+
+                    <button type="submit" id="botao-excluir-conta">
+                        Solicitar exclusão da conta
+                    </button>
+
+                    <p id="mensagem-excluir-conta" role="status" aria-live="polite"></p>
+
+                </form>
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+
+            <!-- MARCA -->
+            <div class="rodape-marca">
+
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+
+            </div>
+
+
+            <!-- NAVEGAÇÃO -->
+            <nav aria-label="Links do rodapé">
+
+                <h2>
+                    Navegação
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="index.html">
+                            Início
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="produtos.html">
+                            Produtos
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sobre.html">
+                            Sobre nós
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+
+
+            <!-- CONTA -->
+            <div class="rodape-conta">
+
+                <h2>
+                    Sua conta
+                </h2>
+
+                <ul>
+                    <li>
+                        <a href="login.html">
+                            Entrar
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cadastro.html">
+                            Criar conta
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="perfil.html">
+                            Meu perfil
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <!-- INFORMAÇÕES -->
+            <div class="rodape-informacoes">
+
+                <p>
+                    &copy;
+                    <span id="current-year">2026</span>
+                    GameZone. Todos os direitos reservados.
+                </p>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+    <script type="module" src="JavaScript - JS/perfil.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,636 @@
+/* =========================================
+   PÁGINA SOBRE NÓS
+========================================= */
+
+/* =========================================
+   INTRODUÇÃO
+========================================= */
+
+#sobre-introducao {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    padding: 6rem 1.5rem;
+
+    text-align: center;
+
+    background:
+        radial-gradient(
+            ellipse at 15% 50%,
+            rgba(128, 0, 255, 0.18),
+            transparent 55%
+        ),
+        radial-gradient(
+            ellipse at 85% 30%,
+            rgba(255, 115, 0, 0.13),
+            transparent 50%
+        ),
+        var(--cor-superficie);
+
+    border-bottom: 1px solid var(--cor-borda);
+}
+
+#sobre-introducao::before,
+#sobre-introducao::after {
+    content: "";
+
+    position: absolute;
+    z-index: -1;
+
+    width: 220px;
+    height: 220px;
+
+    border: 1px solid rgba(168, 85, 247, 0.2);
+    border-radius: 50%;
+}
+
+#sobre-introducao::before {
+    top: -130px;
+    left: -80px;
+}
+
+#sobre-introducao::after {
+    right: -100px;
+    bottom: -150px;
+
+    border-color: rgba(255, 140, 0, 0.2);
+}
+
+#sobre-introducao .container {
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+#sobre-introducao h1 {
+    margin: 0 0 1.2rem;
+
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    font-weight: 800;
+
+    background: linear-gradient(
+        100deg,
+        var(--cor-roxa),
+        var(--cor-laranja)
+    );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+#sobre-introducao p:first-of-type {
+    margin: 0 0 1.5rem;
+
+    color: var(--cor-laranja);
+
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+#sobre-introducao p:last-of-type {
+    max-width: 700px;
+    margin: 0 auto;
+
+    color: var(--cor-texto-secundario);
+
+    font-size: 1.05rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   CONFIGURAÇÃO GERAL DAS SEÇÕES
+========================================= */
+
+#conteudo-principal section:not(#sobre-introducao) {
+    position: relative;
+
+    padding: 4.5rem 1.5rem;
+}
+
+#conteudo-principal section .container {
+    width: 100%;
+    margin: 0 auto;
+}
+
+#conteudo-principal section h2 {
+    position: relative;
+
+    margin: 0 0 2rem;
+
+    color: var(--cor-texto);
+
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+}
+
+#conteudo-principal section h2::after {
+    content: "";
+
+    display: block;
+
+    width: 65px;
+    height: 4px;
+
+    margin-top: 0.8rem;
+
+    border-radius: 10px;
+
+    background: linear-gradient(
+        90deg,
+        var(--cor-roxa),
+        var(--cor-laranja)
+    );
+}
+
+#conteudo-principal section p {
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   QUEM SOMOS
+========================================= */
+
+#nossa-historia {
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            120deg,
+            rgba(128, 0, 255, 0.07),
+            transparent 65%
+        ),
+        var(--cor-fundo);
+}
+
+#nossa-historia .container {
+    max-width: 900px;
+    padding-left: 1.8rem;
+
+    border-left: 4px solid var(--cor-roxa);
+}
+
+#nossa-historia h2 {
+    margin-bottom: 1.5rem;
+}
+
+#nossa-historia p {
+    margin: 0;
+
+    color: var(--cor-texto-secundario);
+    font-size: 1.05rem;
+}
+
+#nossa-historia p + p {
+    margin-top: 1rem;
+}
+
+
+/* =========================================
+   OBJETIVOS DA LOJA
+========================================= */
+
+#objetivos-loja {
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(255, 140, 0, 0.09),
+            transparent 35%
+        ),
+        var(--cor-superficie);
+}
+
+#objetivos-loja .container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.5rem;
+
+    max-width: 1150px;
+}
+
+#objetivos-loja h2 {
+    grid-column: 1 / -1;
+}
+
+#missao,
+#compromisso,
+#experiencia {
+    position: relative;
+    overflow: hidden;
+
+    min-width: 0;
+    padding: 2rem;
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(128, 0, 255, 0.08),
+            transparent 75%
+        ),
+        var(--cor-fundo);
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+#missao {
+    border-top: 3px solid var(--cor-roxa);
+}
+
+#compromisso {
+    border-top: 3px solid var(--cor-laranja);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 140, 0, 0.08),
+            transparent 75%
+        ),
+        var(--cor-fundo);
+}
+
+#experiencia {
+    border-top: 3px solid var(--cor-roxa);
+}
+
+#missao:hover,
+#compromisso:hover,
+#experiencia:hover {
+    transform: translateY(-7px);
+
+    border-color: var(--cor-roxa);
+
+    box-shadow: 0 12px 30px rgba(128, 0, 255, 0.12);
+}
+
+#missao h3,
+#compromisso h3,
+#experiencia h3 {
+    margin: 0 0 1rem;
+
+    font-size: 1.3rem;
+    font-weight: 800;
+}
+
+#missao h3,
+#experiencia h3 {
+    color: var(--cor-roxa);
+}
+
+#compromisso h3 {
+    color: var(--cor-laranja);
+}
+
+#missao p,
+#compromisso p,
+#experiencia p {
+    margin: 0;
+
+    color: var(--cor-texto-secundario);
+}
+
+
+/* =========================================
+   PERGUNTAS FREQUENTES
+========================================= */
+
+#perguntas-frequentes {
+    background:
+        linear-gradient(
+            110deg,
+            rgba(128, 0, 255, 0.07),
+            transparent 55%
+        ),
+        var(--cor-fundo);
+}
+
+#perguntas-frequentes .container {
+    max-width: 900px;
+}
+
+#perguntas-frequentes details {
+    margin-bottom: 1rem;
+
+    border: 1px solid var(--cor-borda);
+    border-left: 3px solid var(--cor-roxa);
+    border-radius: 12px;
+
+    background-color: var(--cor-superficie);
+
+    overflow: hidden;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#perguntas-frequentes details:hover {
+    border-left-color: var(--cor-laranja);
+}
+
+#perguntas-frequentes details[open] {
+    border-color: var(--cor-roxa);
+    box-shadow: 0 5px 18px rgba(128, 0, 255, 0.08);
+}
+
+#perguntas-frequentes details p {
+    margin: 0;
+
+    padding: 0 1.5rem 1rem;
+
+    color: var(--cor-texto-secundario);
+}
+
+#perguntas-frequentes details a {
+    display: inline-block;
+
+    margin: 0 1.5rem 1.3rem;
+
+    color: var(--cor-laranja);
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+#perguntas-frequentes details a:hover {
+    color: var(--cor-roxa);
+    text-decoration: underline;
+}
+
+/* =========================================
+   ANIMAÇÃO DAS SETAS - FAQ SOBRE NÓS
+========================================= */
+
+#perguntas-frequentes summary {
+    list-style: none;
+}
+
+#perguntas-frequentes summary::-webkit-details-marker {
+    display: none;
+}
+
+#perguntas-frequentes summary::marker {
+    content: "";
+}
+
+/* Organização da pergunta */
+#perguntas-frequentes summary {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.8rem;
+
+    padding: 1.3rem 1.5rem;
+
+    color: var(--cor-texto);
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+/* Cria a seta personalizada */
+#perguntas-frequentes summary::before {
+    content: "";
+
+    width: 8px;
+    height: 8px;
+
+    border-right: 2px solid var(--cor-texto);
+    border-bottom: 2px solid var(--cor-texto);
+
+    transform: rotate(-45deg);
+
+    flex-shrink: 0;
+
+    transition: transform 0.3s ease;
+}
+
+/* Rotação quando a pergunta está aberta */
+#perguntas-frequentes details[open] summary::before {
+    transform: rotate(45deg);
+}
+
+/* =========================================
+   CONTATO
+========================================= */
+
+#contato {
+    background:
+        radial-gradient(
+            ellipse at 5% 80%,
+            rgba(128, 0, 255, 0.12),
+            transparent 45%
+        ),
+        radial-gradient(
+            ellipse at 95% 15%,
+            rgba(255, 140, 0, 0.09),
+            transparent 40%
+        ),
+        var(--cor-superficie);
+}
+
+#contato .container {
+    max-width: 850px;
+}
+
+#contato .container > p {
+    color: var(--cor-texto-secundario);
+}
+
+#form-contato {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.3rem;
+
+    margin: 2rem 0;
+
+    padding: 2rem;
+
+    border: 1px solid var(--cor-borda);
+    border-top: 3px solid var(--cor-roxa);
+    border-radius: 18px;
+
+    background-color: var(--cor-fundo);
+
+    box-shadow: 0 10px 30px rgba(128, 0, 255, 0.08);
+}
+
+#form-contato .campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+
+    min-width: 0;
+}
+
+#form-contato label {
+    color: var(--cor-texto);
+
+    font-weight: 700;
+}
+
+#form-contato input,
+#form-contato select,
+#form-contato textarea {
+    width: 100%;
+    min-width: 0;
+
+    padding: 0.9rem 1rem;
+
+    color: var(--cor-texto);
+    background-color: var(--cor-superficie);
+
+    border: 1px solid var(--cor-borda);
+    border-radius: 10px;
+
+    font: inherit;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#form-contato textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+#form-contato input:focus,
+#form-contato select:focus,
+#form-contato textarea:focus {
+    border-color: var(--cor-roxa);
+
+    box-shadow: 0 0 0 3px rgba(128, 0, 255, 0.13);
+}
+
+#form-contato .campo-formulario:has(textarea) {
+    grid-column: 1 / -1;
+}
+
+#mensagem-contato {
+    grid-column: 1 / -1;
+
+    min-height: 1.5rem;
+    margin: 0;
+}
+
+#enviar-contato {
+    grid-column: 1 / -1;
+    justify-self: start;
+
+    padding: 0.95rem 1.8rem;
+
+    color: #ffffff;
+
+    background: linear-gradient(
+        100deg,
+        var(--cor-roxa),
+        var(--cor-laranja)
+    );
+
+    border: none;
+    border-radius: 10px;
+
+    font: inherit;
+    font-weight: 800;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        opacity 0.2s ease;
+}
+
+#enviar-contato:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 7px 20px rgba(128, 0, 255, 0.25);
+}
+
+#enviar-contato:active {
+    transform: translateY(0);
+}
+
+
+/* =========================================
+   ACESSIBILIDADE
+========================================= */
+
+#conteudo-principal a:focus-visible,
+#conteudo-principal button:focus-visible,
+#conteudo-principal summary:focus-visible {
+    outline: 2px solid var(--cor-laranja);
+    outline-offset: 4px;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 900px) {
+
+    #objetivos-loja .container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #experiencia {
+        grid-column: 1 / -1;
+    }
+
+}
+
+
+@media (max-width: 650px) {
+
+    #sobre-introducao {
+        padding: 4rem 1.2rem;
+    }
+
+    #conteudo-principal section:not(#sobre-introducao) {
+        padding: 3.5rem 1.2rem;
+    }
+
+    #objetivos-loja .container,
+    #form-contato {
+        grid-template-columns: 1fr;
+    }
+
+    #experiencia {
+        grid-column: auto;
+    }
+
+    #form-contato {
+        padding: 1.3rem;
+    }
+
+    #enviar-contato {
+        width: 100%;
+        justify-self: stretch;
+    }
+
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+
+    #conteudo-principal *,
+    #conteudo-principal *::before,
+    #conteudo-principal *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+
+}

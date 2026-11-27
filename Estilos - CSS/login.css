@@ -1,0 +1,398 @@
+/* ========================================
+   PÁGINA DE LOGIN - GAMEZONE
+======================================== */
+
+#conteudo-principal {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+#login {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-login {
+    width: 100%;
+    max-width: 480px;
+    padding: 36px;
+    background: var(--cor-card, #171722);
+    border: 1px solid var(--cor-borda, #303044);
+    border-radius: 16px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
+}
+
+/* Introdução */
+
+#login-introducao {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#login-introducao h1 {
+    margin: 0 0 12px;
+    color: var(--cor-primaria, #a855f7);
+    font-size: 2rem;
+    line-height: 1.25;
+}
+
+#login-introducao p {
+    margin: 0;
+    color: var(--cor-texto-secundario, #b8b8c7);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Formulário */
+
+#form-login {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#form-login .campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#form-login .campo-formulario label {
+    color: var(--cor-texto, #f1f1f5);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+#form-login .campo-formulario input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px 14px;
+    color: var(--cor-texto, #f1f1f5);
+    background: var(--cor-fundo, #101018);
+    border: 1px solid var(--cor-borda, #303044);
+    border-radius: 8px;
+    font: inherit;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+#form-login .campo-formulario input::placeholder {
+    color: var(--cor-texto-secundario, #9292a5);
+}
+
+#form-login .campo-formulario input:focus {
+    border-color: var(--cor-primaria, #a855f7);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.18);
+}
+
+/* Manter conectado e recuperar senha */
+
+.opcoes-login {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 0.85rem;
+}
+
+.opcoes-login > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#manter-conectado {
+    width: 16px;
+    height: 16px;
+    accent-color: var(--cor-primaria, #a855f7);
+    cursor: pointer;
+}
+
+.opcoes-login label {
+    color: var(--cor-texto-secundario, #b8b8c7);
+    cursor: pointer;
+}
+
+.opcoes-login a,
+#links-login a {
+    color: var(--cor-primaria, #a855f7);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.opcoes-login a:hover,
+#links-login a:hover {
+    color: var(--cor-destaque, #f97316);
+    text-decoration: underline;
+}
+
+/* Mensagens de validação */
+
+#mensagem-login {
+    display: none;
+    margin: 0;
+    padding: 10px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+#mensagem-login:not(:empty) {
+    display: block;
+}
+
+/* Botão de entrar */
+
+#botao-login {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 18px;
+    color: #fff;
+    background: var(--cor-primaria, #a855f7);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+#botao-login:hover {
+    background: var(--cor-destaque, #f97316);
+    box-shadow: 0 5px 18px rgba(249, 115, 22, 0.2);
+    transform: translateY(-1px);
+}
+
+#botao-login:focus-visible {
+    outline: 2px solid var(--cor-destaque, #f97316);
+    outline-offset: 4px;
+}
+
+#botao-login:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* =========================================
+   SEPARADOR DO GOOGLE
+========================================= */
+
+#separador-google {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: var(--cor-texto-secundario, #b8b3c7);
+    font-size: 0.85rem;
+}
+
+#separador-google::before,
+#separador-google::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+
+    background: var(--cor-borda, #30283f);
+}
+
+#separador-google span {
+    padding: 0 2px;
+}
+
+/* =========================================
+   LOGIN COM GOOGLE
+========================================= */
+
+#google-login-btn {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--cor-texto, #f5f3ff);
+    background: var(--cor-card, #17141f);
+
+    border: 1px solid var(--cor-borda, #40334f);
+    border-radius: 9px;
+
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    
+    gap: 12px;
+}
+
+#google-login-btn:hover {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: var(--cor-primaria, #a855f7);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+#google-login-btn:active {
+    transform: translateY(0);
+}
+
+#google-login-btn:focus-visible {
+    outline: 2px solid var(--cor-destaque, #fb923c);
+    outline-offset: 3px;
+}
+
+#google-login-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#icone-google {
+    width: 21px;
+    height: 21px;
+
+    flex-shrink: 0;
+}
+
+/* Criar conta */
+
+#criar-conta {
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 1px solid var(--cor-borda, #303044);
+    text-align: center;
+}
+
+#criar-conta h2 {
+    margin: 0 0 10px;
+    color: var(--cor-texto, #f1f1f5);
+    font-size: 1.1rem;
+}
+
+#criar-conta p {
+    margin: 0 0 18px;
+    color: var(--cor-texto-secundario, #b8b8c7);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+#link-cadastro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    color: var(--cor-destaque, #f97316);
+    border: 1px solid var(--cor-destaque, #f97316);
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+}
+
+#link-cadastro:hover {
+    color: #fff;
+    background: var(--cor-destaque, #f97316);
+}
+
+/* Links auxiliares */
+
+#links-login {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+    margin-top: 24px;
+    font-size: 0.85rem;
+}
+
+/* Marca GameZone na página de login */
+
+/* Logo da página de login */
+
+#marca-login {
+    width: 100%;
+    margin: 0 0 24px;
+    text-align: center;
+    color: var(--cor-destaque, #f97316);
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+#marca-login span {
+    color: var(--cor-primaria, #a855f7);
+}
+
+/* Links do login */
+
+#links-login {
+    justify-content: flex-start;
+    margin: 0 0 24px;
+}
+
+#links-login-secundarios {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+#links-login-secundarios a {
+    color: var(--cor-primaria, #a855f7);
+    font-size: 0.85rem;
+    text-decoration: none;
+}
+
+#links-login-secundarios a:hover {
+    color: var(--cor-destaque, #f97316);
+    text-decoration: underline;
+}
+
+/* Responsividade */
+
+@media (max-width: 600px) {
+    #conteudo-principal {
+        padding: 24px 14px;
+    }
+
+    .container-login {
+        padding: 28px 22px;
+        border-radius: 12px;
+    }
+
+    #login-introducao h1 {
+        font-size: 1.7rem;
+    }
+
+    .opcoes-login {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 360px) {
+    .container-login {
+        padding: 24px 16px;
+    }
+
+    #links-login {
+        flex-direction: column;
+        align-items: center;
+    }
+}

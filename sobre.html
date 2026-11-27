@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="GameZone: encontre jogos, periféricos e acessórios para elevar sua experiência gamer.">
+
+    <title>Sobre Nós | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/sobre.css">
+</head>
+
+<body>
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+            <!-- BOTÃO DO MENU PARA CELULARES E TABLETS -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li>
+                        <a href="index.html">Início</a>
+                    </li>
+                    <li>
+                        <a href="produtos.html">Produtos</a>
+                    </li>
+                    <li>
+                        <a href="sobre.html" aria-current="page">Sobre nós</a>
+                    </li>
+                </ul>
+
+                <!-- ENTRAR: NO DESKTOP, POSICIONADO À DIREITA.
+                     EM TELAS MENORES, FICARÁ DENTRO DO HAMBÚRGUER. -->
+                <a href="login.html" id="login-link">Entrar</a>
+            </nav>
+
+            <!-- AÇÕES DO CABEÇALHO -->
+            <div id="acoes-cabecalho">
+
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras">
+                    Carrinho
+                    <span id="cart-count" aria-label="Quantidade de itens">
+                        0
+                    </span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main id="conteudo-principal">
+
+        <!-- Apresentação -->
+        <section id="sobre-introducao">
+            <div class="container">
+                <h1>Sobre a GameZone</h1>
+
+                <p>
+                    Seu próximo nível começa aqui.
+                </p>
+
+                <p>
+                    Somos uma loja com foco no universo gamer, criada para reunir
+                    jogos, periféricos e acessórios em um só lugar.
+                </p>
+            </div>
+        </section>
+
+        <!-- Nossa história -->
+        <section id="nossa-historia">
+            <div class="container">
+
+                <h2>Quem somos</h2>
+
+                <p>
+                    A GameZone é um projeto de loja virtual dedicado a quem gosta
+                    de jogar, explorar novos mundos e montar seu próprio espaço gamer.
+                </p>
+
+                <p>
+                    Nossa proposta é oferecer uma experiência de compra organizada,
+                    com informações claras sobre os produtos e uma navegação simples.
+                </p>
+
+                <p>
+                    Aqui, cada jogador pode encontrar produtos para aproveitar
+                    melhor seus jogos favoritos.
+                </p>
+
+            </div>
+        </section>
+
+        <!-- Objetivos da loja -->
+        <section id="objetivos-loja">
+            <div class="container">
+
+                <h2>O que buscamos</h2>
+
+                <div id="missao">
+                    <h3>Nosso objetivo</h3>
+                    <p>
+                        Facilitar a busca por jogos, periféricos e acessórios
+                        para diferentes estilos de jogadores.
+                    </p>
+                </div>
+
+                <div id="compromisso">
+                    <h3>Nosso compromisso</h3>
+                    <p>
+                        Trabalhar para oferecer informações transparentes,
+                        uma experiência de compra clara e atenção ao cliente.
+                    </p>
+                </div>
+
+                <div id="experiencia">
+                    <h3>Sua experiência</h3>
+                    <p>
+                        Queremos que você encontre os produtos com facilidade
+                        e tenha uma navegação agradável em todas as páginas.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Perguntas frequentes -->
+        <section id="perguntas-frequentes">
+            <div class="container">
+
+                <h2>Perguntas frequentes</h2>
+
+                <details>
+                    <summary>Como posso encontrar um produto?</summary>
+                    <p>
+                        Acesse a página de produtos e utilize a pesquisa,
+                        os filtros e as opções de ordenação disponíveis.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Preciso criar uma conta para comprar?</summary>
+                    <p>
+                        As regras de acesso e finalização de compras serão
+                        definidas na implementação do sistema.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Como posso recuperar minha senha?</summary>
+                    <p>
+                        Acesse a página de login e selecione a opção
+                        "Esqueci minha senha" para solicitar a recuperação.
+                    </p>
+                    <a href="recuperar-senha.html">
+                        Recuperar minha senha
+                    </a>
+                </details>
+
+                <details>
+                    <summary>Como entro em contato com a GameZone?</summary>
+                    <p>
+                        Utilize os canais de contato disponibilizados nesta página,
+                        quando estiverem configurados.
+                    </p>
+                </details>
+
+                <details>
+                    <summary>Como acompanho minhas compras?</summary>
+                    <p>
+                        Os recursos para consultar pedidos serão definidos
+                        durante o desenvolvimento das funcionalidades da loja.
+                    </p>
+                </details>
+
+            </div>
+        </section>
+
+        <!-- Contato -->
+        <section id="contato">
+            <div class="container">
+
+                <h2>Entre em contato</h2>
+
+                <p>
+                    Tem dúvidas, sugestões ou precisa de ajuda?
+                    Utilize o formulário abaixo.
+                </p>
+
+                <form id="form-contato">
+
+                    <div class="campo-formulario">
+                        <label for="contato-nome">Nome</label>
+                        <input type="text" id="contato-nome" name="nome" autocomplete="name" required>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="contato-email">E-mail</label>
+                        <input type="email" id="contato-email" name="email" autocomplete="email" required>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="contato-assunto">Assunto</label>
+                        <select id="contato-assunto" name="assunto" required>
+                            <option value="">Selecione um assunto</option>
+                            <option value="duvida">Dúvida</option>
+                            <option value="pedido">Pedido</option>
+                            <option value="produto">Produto</option>
+                            <option value="problema">Problema técnico</option>
+                            <option value="sugestao">Sugestão</option>
+                            <option value="outro">Outro</option>
+                        </select>
+                    </div>
+
+                    <div class="campo-formulario">
+                        <label for="contato-mensagem">Mensagem</label>
+                        <textarea id="contato-mensagem" name="mensagem" rows="6" placeholder="Escreva sua mensagem..."
+                            required></textarea>
+                    </div>
+
+                    <p id="mensagem-contato" role="status" aria-live="polite"></p>
+
+                    <button type="submit" id="enviar-contato">
+                        Enviar mensagem
+                    </button>
+
+                </form>
+
+                <p>
+                    O envio de mensagens será ativado posteriormente,
+                    após a implementação da funcionalidade correspondente.
+                </p>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+            <div class="rodape-marca">
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+            </div>
+
+            <nav aria-label="Links do rodapé">
+                <h2>Navegação</h2>
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-conta">
+                <h2>Sua conta</h2>
+
+                <ul>
+                    <li><a href="termos.html">Termos e Condições de Uso</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="trocas.html">Política de Trocas, Devoluções e Reembolso</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-informacoes">
+                <p>
+                    &copy; <span id="current-year">2026</span> GameZone.
+                    Todos os direitos reservados.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+</body>
+
+</html>

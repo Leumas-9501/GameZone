@@ -1,0 +1,483 @@
+/* =========================================
+   CADASTRO — GAMEZONE
+========================================= */
+
+/* Estrutura principal */
+
+#conteudo-principal {
+    width: 100%;
+    min-height: 100vh;
+    padding: 48px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cadastro {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.container-cadastro {
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 36px;
+    background: var(--cor-card, #17141f);
+    border: 1px solid var(--cor-borda, #30283f);
+    border-radius: 18px;
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+}
+
+/* Introdução */
+
+#cadastro-introducao {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+#cadastro-introducao h1 {
+    margin: 0 0 12px;
+    color: var(--cor-texto, #f5f3ff);
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.2;
+}
+
+#cadastro-introducao h1::after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 4px;
+    margin: 14px auto 0;
+    background: var(--cor-destaque, #fb923c);
+    border-radius: 4px;
+}
+
+#cadastro-introducao p {
+    margin: 14px 0 0;
+    color: var(--cor-texto-secundario, #b8b3c7);
+    line-height: 1.6;
+}
+
+/* Grupos do formulário */
+
+#form-cadastro {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+#form-cadastro fieldset {
+    min-width: 0;
+    margin: 0;
+    padding: 22px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    background: var(--cor-fundo, #100d16);
+    border: 1px solid var(--cor-borda, #30283f);
+    border-radius: 12px;
+}
+
+#form-cadastro legend {
+    padding: 0 10px;
+    color: var(--cor-primaria, #a855f7);
+    font-size: 1.05rem;
+    font-weight: 800;
+}
+
+/* Campos */
+
+.campo-formulario {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.campo-formulario label {
+    color: var(--cor-texto, #f5f3ff);
+    font-size: 0.92rem;
+    font-weight: 650;
+}
+
+.campo-formulario input {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    color: var(--cor-texto, #f5f3ff);
+    background: var(--cor-card, #17141f);
+    border: 1px solid var(--cor-borda, #40334f);
+    border-radius: 8px;
+    font: inherit;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.campo-formulario input::placeholder {
+    color: #81798f;
+}
+
+.campo-formulario input:hover {
+    border-color: var(--cor-primaria, #9333ea);
+}
+
+.campo-formulario input:focus {
+    outline: none;
+    border-color: var(--cor-primaria, #a855f7);
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.18);
+}
+
+.campo-formulario input:focus-visible {
+    outline: 2px solid var(--cor-destaque, #fb923c);
+    outline-offset: 2px;
+}
+
+.campo-formulario p {
+    margin: 0;
+    color: var(--cor-texto-secundario, #b8b3c7);
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+/* CPF e data de nascimento ocupam espaço normal na grade */
+
+#cadastro-cpf,
+#cadastro-nascimento {
+    min-width: 0;
+}
+
+/* Aceite dos termos */
+
+#aceite-termos {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+}
+
+#aceitar-termos {
+    width: 18px;
+    height: 18px;
+    margin: 3px 0 0;
+    flex-shrink: 0;
+    accent-color: var(--cor-primaria, #9333ea);
+    cursor: pointer;
+}
+
+#aceite-termos label {
+    color: var(--cor-texto-secundario, #b8b3c7);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+#aceite-termos a {
+    color: var(--cor-primaria, #c084fc);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+#aceite-termos a:hover {
+    color: var(--cor-destaque, #fb923c);
+}
+
+/* Mensagens de validação */
+
+#mensagem-cadastro {
+    margin: 0;
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+/* Mensagem vazia */
+#mensagem-cadastro:empty {
+    display: none;
+}
+
+/* Erro */
+#mensagem-cadastro[data-tipo="erro"] {
+    color: #fecaca;
+    background: rgba(220, 38, 38, 0.12);
+    border: 1px solid rgba(220, 38, 38, 0.35);
+}
+
+/* Sucesso */
+#mensagem-cadastro[data-tipo="sucesso"] {
+    color: #bbf7d0;
+    background: rgba(34, 197, 94, 0.12);
+    border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+/* Botão de cadastro */
+
+#botao-cadastro {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 18px;
+    color: #fff;
+    background: var(--cor-primaria, #9333ea);
+    border: none;
+    border-radius: 9px;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#botao-cadastro:hover {
+    background: #7e22ce;
+    transform: translateY(-1px);
+}
+
+#botao-cadastro:active {
+    transform: translateY(0);
+}
+
+#botao-cadastro:focus-visible {
+    outline: 2px solid var(--cor-destaque, #fb923c);
+    outline-offset: 4px;
+}
+
+/* =========================================
+   SEPARADOR DO GOOGLE
+========================================= */
+
+#separador-google {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    color: var(--cor-texto-secundario, #b8b3c7);
+    font-size: 0.85rem;
+}
+
+#separador-google::before,
+#separador-google::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+
+    background: var(--cor-borda, #30283f);
+}
+
+#separador-google span {
+    padding: 0 2px;
+}
+
+/* =========================================
+   LOGIN COM GOOGLE
+========================================= */
+
+#botao-google {
+    width: 100%;
+    min-height: 50px;
+    padding: 13px 18px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: var(--cor-texto, #f5f3ff);
+    background: var(--cor-card, #17141f);
+
+    border: 1px solid var(--cor-borda, #40334f);
+    border-radius: 9px;
+
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+    
+    gap: 12px;
+}
+
+#botao-google:hover {
+    background: rgba(168, 85, 247, 0.08);
+    border-color: var(--cor-primaria, #a855f7);
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+#botao-google:active {
+    transform: translateY(0);
+}
+
+#botao-google:focus-visible {
+    outline: 2px solid var(--cor-destaque, #fb923c);
+    outline-offset: 3px;
+}
+
+#botao-google:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+#icone-google {
+    width: 21px;
+    height: 21px;
+
+    flex-shrink: 0;
+}
+
+/* Acesso para quem já tem conta */
+
+#acesso-existente {
+    margin-top: 30px;
+    padding-top: 24px;
+    text-align: center;
+    border-top: 1px solid var(--cor-borda, #30283f);
+}
+
+#acesso-existente h2 {
+    margin: 0 0 8px;
+    color: var(--cor-texto, #f5f3ff);
+    font-size: 1.1rem;
+}
+
+#acesso-existente p {
+    margin: 0 0 14px;
+    color: var(--cor-texto-secundario, #b8b3c7);
+    font-size: 0.9rem;
+}
+
+#link-login {
+    display: inline-block;
+    padding: 10px 20px;
+    color: var(--cor-destaque, #fb923c);
+    border: 1px solid var(--cor-destaque, #fb923c);
+    border-radius: 8px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
+}
+
+#link-login:hover {
+    color: #17141f;
+    background: var(--cor-destaque, #fb923c);
+}
+
+/* Links adicionais */
+
+#links-cadastro {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px 24px;
+}
+
+#links-cadastro a {
+    color: var(--cor-texto-secundario, #b8b3c7);
+    font-size: 0.88rem;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+#links-cadastro a:hover {
+    color: var(--cor-primaria, #c084fc);
+}
+
+/* Logo GameZone na página de cadastro */
+
+#marca-cadastro {
+    width: 100%;
+    margin: 0 0 24px;
+    text-align: center;
+    color: var(--cor-destaque, #f97316);
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+#marca-cadastro span {
+    color: var(--cor-primaria, #a855f7);
+}
+
+/* Link para voltar ao início */
+
+#links-cadastro-topo {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 24px;
+}
+
+#links-cadastro-topo a {
+    color: var(--cor-primaria, #a855f7);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+#links-cadastro-topo a:hover {
+    color: var(--cor-destaque, #f97316);
+    text-decoration: underline;
+}
+
+/* =========================================
+   RESPONSIVIDADE
+========================================= */
+
+@media (max-width: 600px) {
+    #conteudo-principal {
+        min-height: 100vh;
+        padding: 24px 14px;
+        align-items: flex-start;
+    }
+
+    .container-cadastro {
+        padding: 24px 18px;
+        border-radius: 14px;
+    }
+
+    #cadastro-introducao {
+        margin-bottom: 24px;
+    }
+
+    #form-cadastro {
+        gap: 22px;
+    }
+
+    #form-cadastro fieldset {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 17px;
+        padding: 18px 14px;
+    }
+
+    #links-cadastro {
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+    }
+}
+
+@media (max-width: 360px) {
+    #conteudo-principal {
+        padding: 14px 8px;
+    }
+
+    .container-cadastro {
+        padding: 22px 12px;
+    }
+
+    #form-cadastro fieldset {
+        padding: 16px 10px;
+    }
+
+    #cadastro-introducao p {
+        font-size: 0.9rem;
+    }
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Confira os produtos selecionados e revise seu carrinho de compras na GameZone.">
+
+    <title>Meu carrinho | GameZone</title>
+
+    <script>
+        const temaSalvo = localStorage.getItem("gamezone-theme");
+
+        document.documentElement.dataset.theme =
+            temaSalvo === "light" ? "light" : "dark";
+    </script>
+
+    <link rel="stylesheet" href="Estilos - CSS/padrão.css">
+    <link rel="stylesheet" href="Estilos - CSS/carrinho.css">
+</head>
+
+<body>
+    <!-- CABEÇALHO -->
+    <header id="cabecalho">
+        <div class="container-cabecalho">
+
+            <!-- LOGOTIPO -->
+            <a href="index.html" id="logo" aria-label="GameZone - Página inicial">
+                <span>GAME</span><span>ZONE</span>
+            </a>
+
+            <!-- MENU HAMBÚRGUER -->
+            <button type="button" id="menu-toggle" aria-label="Abrir menu de navegação" aria-controls="main-nav"
+                aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <!-- NAVEGAÇÃO PRINCIPAL -->
+            <nav id="main-nav" aria-label="Navegação principal">
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+
+                <!-- ENTRAR NO DESKTOP À DIREITA;
+                     DENTRO DO HAMBÚRGUER EM CELULARES E TABLETS -->
+                <a href="login.html" id="login-link">Entrar</a>
+            </nav>
+
+            <!-- CARRINHO -->
+            <div id="acoes-cabecalho">
+                <a href="Telas - Administrador/admin.html" id="admin-link" hidden>
+                    Administração
+                </a>
+                <a href="carrinho.html" id="cart-link" aria-label="Abrir carrinho de compras" aria-current="page">
+                    Carrinho
+                    <span id="cart-count" aria-label="Quantidade de itens">0</span>
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo-principal">
+
+        <!-- TÍTULO DA PÁGINA -->
+        <section id="carrinho-introducao" aria-labelledby="titulo-carrinho">
+            <div class="container">
+                <h1 id="titulo-carrinho">Meu carrinho</h1>
+
+                <p>
+                    Confira seus produtos antes de continuar para a compra.
+                </p>
+            </div>
+        </section>
+
+        <!-- CARRINHO DE COMPRAS -->
+        <section id="carrinho-compras" aria-label="Itens do carrinho">
+            <div class="container-carrinho">
+
+                <!-- LISTA DE PRODUTOS -->
+                <div id="lista-itens-carrinho">
+
+                    <!--
+                        MODELO DE ITEM.
+                        O JavaScript preencherá esta estrutura posteriormente.
+                    -->
+                    <article class="item-carrinho" data-product-id="exemplo-1">
+
+                        <div class="item-carrinho-imagem">
+                            <a href="produto.html">
+                                <img src="assets/images/produto-exemplo-1.png" alt="Imagem ilustrativa do produto">
+                            </a>
+                        </div>
+
+                        <div class="item-carrinho-informacoes">
+                            <h2>
+                                <a href="produto.html">
+                                    Nome do produto
+                                </a>
+                            </h2>
+
+                            <p class="item-carrinho-categoria">
+                                Categoria do produto
+                            </p>
+
+                            <p class="item-carrinho-preco-unitario">
+                                Preço unitário: A definir
+                            </p>
+
+                            <p class="item-carrinho-disponibilidade">
+                                Disponibilidade a confirmar
+                            </p>
+                        </div>
+
+                        <div class="item-carrinho-quantidade">
+                            <label for="quantidade-item-1">Quantidade:</label>
+
+                            <input type="number" id="quantidade-item-1" name="quantidade" value="1" min="1" step="1"
+                                inputmode="numeric">
+                        </div>
+
+                        <div class="item-carrinho-total">
+                            <p>Subtotal do item</p>
+
+                            <p class="valor-subtotal-item">
+                                A definir
+                            </p>
+                        </div>
+
+                        <div class="item-carrinho-acoes">
+                            <button type="button" class="remover-item-carrinho"
+                                aria-label="Remover produto do carrinho">
+                                Remover
+                            </button>
+                        </div>
+
+                    </article>
+
+                </div>
+
+                <!-- CARRINHO VAZIO -->
+                <div id="carrinho-vazio" hidden>
+                    <h2>Seu carrinho está vazio</h2>
+
+                    <p>
+                        Você ainda não adicionou produtos ao carrinho.
+                        Explore nossa loja e encontre algo para sua próxima jogatina!
+                    </p>
+
+                    <a href="produtos.html" id="continuar-comprando-vazio">
+                        Explorar produtos
+                    </a>
+                </div>
+
+                <!-- RESUMO DA COMPRA -->
+                <aside id="resumo-carrinho" aria-labelledby="titulo-resumo">
+                    <h2 id="titulo-resumo">Resumo da compra</h2>
+
+                    <dl id="valores-carrinho">
+                        <div>
+                            <dt>Quantidade de itens</dt>
+                            <dd id="resumo-quantidade-itens">0</dd>
+                        </div>
+
+                        <div>
+                            <dt>Subtotal dos produtos</dt>
+                            <dd id="resumo-subtotal">R$ 0,00</dd>
+                        </div>
+
+                        <div>
+                            <dt>Frete</dt>
+                            <dd id="resumo-frete">
+                                Calculado na próxima etapa
+                            </dd>
+                        </div>
+
+                        <div>
+                            <dt>Total</dt>
+                            <dd id="resumo-total">R$ 0,00</dd>
+                        </div>
+                    </dl>
+
+                    <!-- CÓDIGO PROMOCIONAL OPCIONAL -->
+                    <form id="form-cupom">
+                        <label for="codigo-cupom">Cupom de desconto</label>
+
+                        <div id="campo-cupom">
+                            <input type="text" id="codigo-cupom" name="cupom" placeholder="Digite seu cupom"
+                                autocomplete="off">
+
+                            <button type="submit" id="aplicar-cupom">
+                                Aplicar
+                            </button>
+                        </div>
+
+                        <p id="mensagem-cupom" role="status" aria-live="polite"></p>
+                    </form>
+
+                    <!-- FINALIZAÇÃO -->
+                    <a href="checkout.html" id="finalizar-compra">
+                        Continuar para a compra
+                    </a>
+
+                    <a href="produtos.html" id="continuar-comprando">
+                        Continuar comprando
+                    </a>
+
+                </aside>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- RODAPÉ -->
+    <footer id="rodape">
+        <div class="container-rodape">
+
+            <div class="rodape-marca">
+                <a href="index.html" aria-label="GameZone - Página inicial">
+                    GAMEZONE
+                </a>
+
+                <p>
+                    Seu espaço para jogos, periféricos e acessórios gamer.
+                </p>
+            </div>
+
+            <nav aria-label="Links do rodapé">
+                <h2>Navegação</h2>
+
+                <ul>
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="produtos.html">Produtos</a></li>
+                    <li><a href="sobre.html">Sobre nós</a></li>
+                </ul>
+            </nav>
+
+            <div class="rodape-conta">
+                <h2>Sua conta</h2>
+
+                <ul>
+                    <li><a href="termos.html">Termos e Condições de Uso</a></li>
+                    <li><a href="privacidade.html">Política de Privacidade</a></li>
+                    <li><a href="trocas.html">Política de Trocas, Devoluções e Reembolso</a></li>
+                </ul>
+            </div>
+
+            <div class="rodape-informacoes">
+                <p>
+                    &copy; <span id="current-year">2026</span> GameZone.
+                    Todos os direitos reservados.
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script type="module" src="JavaScript - JS/Padrão.js"></script>
+</body>
+
+</html>
